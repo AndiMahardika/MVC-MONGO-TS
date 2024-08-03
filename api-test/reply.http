@@ -1,0 +1,23 @@
+### get all data replies
+GET http://localhost:8000/replies
+
+### crete replies
+POST http://localhost:8000/replies
+Content-Type: application/json
+
+{
+  "text" : "ini adalah reply ke-tiga",
+  "threadId": "66ae7c562cede0ca8d0ea697"
+}
+
+### update replies
+PATCH http://localhost:8000/replies/66aea9b8fe379c7d792a20a0
+Content-Type: application/json
+
+{
+  "text" : "test update replies",
+  "threadId": "66ae7c562cede0ca8d0ea697"
+}
+
+### delete replies
+DELETE http://localhost:8000/replies/66aeac5211a26987818844e3

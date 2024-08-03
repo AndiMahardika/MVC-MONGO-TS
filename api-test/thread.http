@@ -1,0 +1,26 @@
+### get all data thread
+GET http://localhost:8000/threads
+
+### crete thread
+POST http://localhost:8000/threads
+Content-Type: application/json
+
+{
+  "content" : "ini adalah content Thread ke-tiga",
+  "category" : "world",
+  "authorId": "66adc7b0dd575e2aee2477e9"
+}
+
+### update thread
+PATCH http://localhost:8000/threads/66ae7c562cede0ca8d0ea697
+Content-Type: application/json
+
+{
+  "content" : "update thread 2",
+  "category" : "programming",
+  "release": "2023-08-02T00:00:00.000Z",
+  "authorId": "66adc7b0dd575e2aee2477e9"
+}
+
+### delete thread
+DELETE http://localhost:8000/threads/66ae834774f4dab80c695e0e
