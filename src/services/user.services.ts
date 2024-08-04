@@ -5,15 +5,6 @@ const UserServices = {
     try {
       const allUsers = await UserRepository.getAll();
 
-      // filter DTO      
-      // const filteredUsers = allUsers?.map(({ _id, name, age, email }) => ({
-      //   id: _id,
-      //   name,
-      //   age,
-      //   email
-      // }));
-      // return filteredUsers;
-
       return allUsers;
     } catch (error) {
       console.log(error);
@@ -21,13 +12,13 @@ const UserServices = {
   },
 
   createUser : async(userData : {name: string, age: number, email: string, password: string}) => {
+    const {name} = userData
+
+    if(name.length > 5){
+      return console.log('Nama tidak boleh lebih dari 5 huruf');
+    }
+
     try {
-      const {name} = userData
-
-      if(typeof name === "string" && name.length > 5){
-        return console.log('Nama tidak boleh lebih dari 5 huruf');
-      }
-
       const newUser = await UserRepository.createUser(userData)
 
       return newUser
@@ -37,6 +28,14 @@ const UserServices = {
   },
 
   updateUser: async (userId: string, userData: { name: string, age: number, email: string, password: string }) => {
+    const {name} = userData;
+
+    if(name.length > 5){
+      // console.log('Nama tidak boleh lebih dari 5 huruf');
+      // return false;
+      return console.log('Nama tidak boleh lebih dari 5 huruf');
+    }
+
     try {
       const updatedUser = await UserRepository.updateUser(userId, userData);
       return updatedUser;

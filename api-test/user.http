@@ -5,9 +5,9 @@ POST http://localhost:8000/users
 Content-Type: application/json
 
 {
-    "name": "Erine",
-    "age": 18,
-    "email": "erine@gmail.com",
+    "name": "User3",
+    "age": 9,
+    "email": "user3@gmail.com",
     "password": "1234"
 }
 
@@ -17,11 +17,12 @@ DELETE http://localhost:8000/users/66adc25535094921ca14cbce
 
 ### Update User
 PATCH http://localhost:8000/users/66adc7b0dd575e2aee2477e9
+Authorization: authkey
 Content-Type: application/json
 
 {
-  "name": "erine",
-  "age" : 19,
+  "name": "Erin",
+  "age" : 18,
   "email": "erine@gmail.com",
   "password": "123"
 }

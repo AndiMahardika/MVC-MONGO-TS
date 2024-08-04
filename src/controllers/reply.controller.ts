@@ -7,13 +7,10 @@ const ReplyController = {
       const allReplies = await ReplyServices.getAll();
 
       return res
-              .status(201)
+              .status(200)
               .json({ message: "Success get data reply", data: allReplies})
     } catch (error) {
       console.log(error);
-      return res
-              .status(400)
-              .json({ message: "Failed get data reply"})
     }
   },
 
@@ -28,9 +25,6 @@ const ReplyController = {
               .json({ message: "Success create reply", data: newReply})
     } catch (error) {
       console.log(error);
-      return res
-              .status(400)
-              .json({ message: "Failed create reply"})
     }
   },
 
@@ -42,13 +36,10 @@ const ReplyController = {
       const updateReply = await ReplyServices.updateReply(replyId, {text, threadId})
 
       return res
-              .status(201)
+              .status(200)
               .json({message : "success update reply", data: updateReply})      
     } catch (error) {
       console.log(error);
-      return res
-              .status(400)
-              .json({ message: "Failed to update reply"})
     }
   },
 
@@ -58,13 +49,10 @@ const ReplyController = {
 
       await ReplyServices.deleteReply(replyId)
       return res
-              .status(201)
+              .status(200)
               .json({message : "success delete reply"})
     } catch (error) {
       console.log(error);
-      return res
-              .status(400)
-              .json({ message: "Failed to delete reply"})
     }
   }
 
