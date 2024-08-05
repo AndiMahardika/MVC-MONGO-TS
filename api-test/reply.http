@@ -6,16 +6,16 @@ POST http://localhost:8000/replies
 Content-Type: application/json
 
 {
-  "text" : "ini adalah reply ke-tiga",
+  "text" : "ini adalah reply terbaru 2",
   "threadId": "66af12f5959c292639e35de3"
 }
 
 ### update replies
-PATCH http://localhost:8000/replies/66af155a959c292639e35df1
+PATCH http://localhost:8000/replies/66b0654d4485b072adba0a6a
 Content-Type: application/json
 
 {
-  "text" : "test update replies ke tiga",
+  "text" : "test update replies terbaru 2",
   "threadId": "66af12f5959c292639e35de3"
 }
 

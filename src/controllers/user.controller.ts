@@ -63,6 +63,28 @@ const UserController = {
       console.log(error);
     }
   },
+
+  handleLoginUser: async (req: Request, res: Response) => {
+    const { email, password } = req.body;
+    try {
+      const loginResult = await UserServices.loginUser({ email, password });
+      if (loginResult === "user not found") {
+        return res.status(404).json({ message: "User not found" });
+      } 
+      if (loginResult === "incorrect password") {
+        return res.status(401).json({ message: "Incorrect password" });
+      } 
+      if (loginResult === "Email harus valid dan password harus memiliki minimal 8 karakter") {
+        return res.status(400).json({ message: "Email harus valid dan password harus memiliki minimal 8 karakter" });
+      } 
+        
+      return res.status(200).json({ message: "Login successful", data: loginResult });
+    } catch (error) {
+      console.log(error);
+      // const errorMessage = error instanceof Error ? error.message : 'Failed to login';
+      // return res.status(500).json({ message: errorMessage });
+    }
+  }
 }
 
 export default UserController;

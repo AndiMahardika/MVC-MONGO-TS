@@ -1,4 +1,6 @@
 import UserRepository from "../repositories/user.repository";
+import bcrypt from "bcrypt";
+import { IUser } from "../types/entity";
 
 const UserServices = {
   getAll: async () => {
@@ -11,11 +13,15 @@ const UserServices = {
     }
   },
 
-  createUser : async(userData : {name: string, age: number, email: string, password: string}) => {
-    const {name} = userData
+  createUser : async(userData : IUser) => {
+    const {name, password} = userData
 
     if(name.length > 5){
       return console.log('Nama tidak boleh lebih dari 5 huruf');
+    }
+
+    if(password.length < 8){
+      return console.log('password harus memiliki minimal 8 karakter');
     }
 
     try {
@@ -27,7 +33,7 @@ const UserServices = {
     }
   },
 
-  updateUser: async (userId: string, userData: { name: string, age: number, email: string, password: string }) => {
+  updateUser: async (userId: string, userData: IUser) => {
     const {name} = userData;
 
     if(name.length > 5){
@@ -47,6 +53,34 @@ const UserServices = {
   deleteUser: async(id: string) => {
     try {
       await UserRepository.deleteUser(id)
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+  loginUser: async (loginData: {email: string, password: string}) => {
+    try {
+      const { email, password } = loginData;
+
+      // login validation
+      if (!email || password.length < 8) {
+        return "Email harus valid dan password harus memiliki minimal 8 karakter";
+      }
+
+      const user = await UserRepository.loginUser(email);
+
+      if (!user) {
+        return "user not found";
+      }
+
+      // password validation
+      const isPassMatch = await bcrypt.compare(password, user.password as string);
+
+      if (!isPassMatch) {
+        return "incorrect password";
+      }
+
+      return user;
     } catch (error) {
       console.log(error);
     }

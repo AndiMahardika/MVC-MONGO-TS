@@ -1,5 +1,5 @@
-import { ObjectId } from "mongoose";
 import { Thread } from "../models/thread.schema"
+import { IThread } from "../types/entity";
 
 const ThreadRepository = {
   getAll: async () => {
@@ -11,7 +11,7 @@ const ThreadRepository = {
     }
   },
 
-  createThread: async (threadData: {content: string, category: string, release: Date, authorId: ObjectId }) => {
+  createThread: async (threadData: IThread) => {
     try {
       const newThread = new Thread(threadData)
       const saveThread = await newThread.save()
@@ -22,7 +22,7 @@ const ThreadRepository = {
     }
   },
 
-  updateThread: async (threadId: string, threadData: {content: string, category: string, release: Date, authorId: ObjectId }) => {
+  updateThread: async (threadId: string, threadData: IThread) => {
     try {
       const {content, category, release, authorId} = threadData
 

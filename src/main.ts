@@ -20,8 +20,10 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-app.use("/", userRoutes)
-app.use("/", threadRoutes)
-app.use("/", threadReplies)
+app.use("/users", userRoutes)
+app.use("/threads", threadRoutes)
+app.use("/replies", threadReplies)
 
-app.listen(8000)
+app.listen(process.env.PORT, () => {
+  console.log(`Server running at port, ${process.env.PORT}`);
+})

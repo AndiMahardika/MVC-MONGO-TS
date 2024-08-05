@@ -1,5 +1,5 @@
-import { ObjectId } from "mongoose";
 import {Replies} from "../models/reply.schema"
+import { IReply } from "../types/entity";
 
 const ReplyRepository = {
   getAll: async () => {
@@ -12,7 +12,7 @@ const ReplyRepository = {
     }
   },
 
-  createReply: async (replyData: {text: string, threadId: ObjectId}) => {
+  createReply: async (replyData: IReply) => {
     try {
       const newReply = new Replies(replyData)
       const saveReply = await newReply.save()
@@ -22,7 +22,7 @@ const ReplyRepository = {
     }
   },
 
-  updateReply: async (replyId: string, replyData: {text: string, threadId: ObjectId}) => {
+  updateReply: async (replyId: string, replyData: IReply) => {
     try {
       const {text, threadId} = replyData;
       const updateReply = await Replies.findByIdAndUpdate(

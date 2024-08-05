@@ -3,7 +3,8 @@ import UserController from "../controllers/user.controller"
 
 export const userRoutes = express.Router()
 
-userRoutes.get("/users", UserController.handleGetAllUsers)
-userRoutes.post("/users", UserController.handleCreateUsers)
-userRoutes.delete("/users/:id", UserController.handleDeleteUser)
-userRoutes.patch("/users/:id", UserController.handleUpdateUser)
+userRoutes.get("/", UserController.handleGetAllUsers)
+userRoutes.post("/", UserController.handleCreateUsers)
+userRoutes.post("/login", UserController.handleLoginUser)
+userRoutes.delete("/:id", UserController.handleDeleteUser)
+userRoutes.patch("/:id", UserController.handleUpdateUser)

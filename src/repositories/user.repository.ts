@@ -1,4 +1,6 @@
 import { User } from "../models/user.schema";
+import bcrypt from "bcrypt";
+import { IUser } from "../types/entity";
 
 const UserRepository = {
   getAll: async () => {
@@ -11,9 +13,11 @@ const UserRepository = {
     }
   },
 
-  createUser: async (userData : {name: string, age: number, email: string, password: string}) => {
+  createUser: async (userData : IUser) => {
     try {
       const {name, age, email, password} = userData;
+
+      const hashPassword = await bcrypt.hash(password, 13)
 
       // const newUser = new User(userData);
       // const saveUser = await newUser.save();
@@ -21,8 +25,9 @@ const UserRepository = {
         name,
         age,
         email,
-        password
+        password: hashPassword
       })
+      console.log(newUser);
       
       const saveUser = await newUser.save()
       return saveUser
@@ -32,7 +37,7 @@ const UserRepository = {
     }
   },
 
-  updateUser: async (userId: string, userData: { name: string, age: number, email: string, password: string }) => {
+  updateUser: async (userId: string, userData: IUser) => {
     try {
       const updatedUser = await User.findOneAndUpdate(
         { _id: userId },
@@ -49,6 +54,15 @@ const UserRepository = {
     try {
       const userId = id;
       return await User.findByIdAndDelete(userId);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+  loginUser: async (email: string) => {
+    try {
+      const user = await User.findOne({email})
+      return user;
     } catch (error) {
       console.log(error);
     }

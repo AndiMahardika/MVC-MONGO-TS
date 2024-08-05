@@ -6,17 +6,17 @@ POST http://localhost:8000/threads
 Content-Type: application/json
 
 {
-  "content" : "Thread Malam horror S3",
+  "content" : "Thread ahihiho",
   "category" : "comedy",
   "authorId": "66adc7b0dd575e2aee2477e9"
 }
 
 ### update thread
-PATCH http://localhost:8000/threads/66af12f5959c292639e35de3
+PATCH http://localhost:8000/threads/66b0667bd67fe4e45b07fc62
 Content-Type: application/json
 
 {
-  "content" : "Thread Malam horror Update",
+  "content" : "ahihiho update",
   "category" : "horror",
   "release": "2024-08-03",
   "authorId": "66adc7b0dd575e2aee2477e9"

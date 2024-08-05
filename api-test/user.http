@@ -1,3 +1,4 @@
+### Get Users
 GET http://localhost:8000/users
 
 ### Create User
@@ -5,24 +6,33 @@ POST http://localhost:8000/users
 Content-Type: application/json
 
 {
-    "name": "User4555",
-    "age": 10,
-    "email": "user4@gmail.com",
-    "password": "1234"
+    "name": "User7",
+    "age": 7,
+    "email": "user76@gmail.com",
+    "password": "mahardika123"
 }
 
 ### Delete User
-DELETE http://localhost:8000/users/66af1119959c292639e35dda
+DELETE http://localhost:8000/users/66b067fb6f620fac91b1f7a8
 
 
 ### Update User
-PATCH http://localhost:8000/users/66adc7b0dd575e2aee2477e9
-Authorization: authkey123
+PATCH http://localhost:8000/users/66b0444daae36a02d0c3f553
+Authorization: authkey
 Content-Type: application/json
 
 {
-  "name": "Erine",
+  "name": "user",
   "age" : 18,
   "email": "cavallery@gmail.com",
   "password": "12345"
+}
+
+### Login
+POST http://localhost:8000/users/login
+Content-Type: application/json
+
+{
+    "email": "user76@gmail.com",
+    "password": "mahardika123"
 }

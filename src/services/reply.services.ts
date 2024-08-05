@@ -1,5 +1,6 @@
 import { ObjectId } from "mongoose";
 import ReplyRepository from "../repositories/reply.repository";
+import { IReply } from "../types/entity";
 
 const ReplyServices = {
   getAll: async () => {
@@ -12,7 +13,7 @@ const ReplyServices = {
     }
   },
 
-  createReply: async (replyData: {text: string, threadId: ObjectId}) => {
+  createReply: async (replyData: IReply) => {
     try {
       const newReply = await ReplyRepository.createReply(replyData);
       return newReply
@@ -21,7 +22,7 @@ const ReplyServices = {
     }
   },
 
-  updateReply: async (replyId: string, replyData: {text: string, threadId: ObjectId}) => {
+  updateReply: async (replyId: string, replyData: IReply) => {
     try {
       const updateReply = await ReplyRepository.updateReply(replyId, replyData)
       return updateReply
