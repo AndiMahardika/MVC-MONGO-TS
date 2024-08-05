@@ -6,21 +6,21 @@ POST http://localhost:8000/threads
 Content-Type: application/json
 
 {
-  "content" : "Thread Malam horror S2",
-  "category" : "horror",
+  "content" : "Thread Malam horror S3",
+  "category" : "comedy",
   "authorId": "66adc7b0dd575e2aee2477e9"
 }
 
 ### update thread
-PATCH http://localhost:8000/threads/66ae7c562cede0ca8d0ea697
+PATCH http://localhost:8000/threads/66af12f5959c292639e35de3
 Content-Type: application/json
 
 {
-  "content" : "update thread 3",
-  "category" : "programming",
-  "release": "2024-06-02",
+  "content" : "Thread Malam horror Update",
+  "category" : "horror",
+  "release": "2024-08-03",
   "authorId": "66adc7b0dd575e2aee2477e9"
 }
 
 ### delete thread
-DELETE http://localhost:8000/threads/66af0d8bb49056ec8710a676
+DELETE http://localhost:8000/threads/66ae837474f4dab80c695e13
