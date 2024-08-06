@@ -14,7 +14,12 @@ const UserServices = {
   },
 
   createUser : async(userData : IUser) => {
-    const {name, password} = userData
+    const {name, password, email} = userData
+
+    const checkCollosion = await UserRepository.checkCollosion(email);
+    if(checkCollosion){
+      return console.log('email sudah terdaftar');
+    }
 
     if(name.length > 5){
       return console.log('Nama tidak boleh lebih dari 5 huruf');
@@ -34,12 +39,16 @@ const UserServices = {
   },
 
   updateUser: async (userId: string, userData: IUser) => {
-    const {name} = userData;
+    const {name, password} = userData;
 
     if(name.length > 5){
       // console.log('Nama tidak boleh lebih dari 5 huruf');
       // return false;
       return console.log('Nama tidak boleh lebih dari 5 huruf');
+    }
+
+    if(password.length < 8){
+      return console.log('password harus memiliki minimal 8 karakter');
     }
 
     try {

@@ -6,20 +6,17 @@ POST http://localhost:8000/threads
 Content-Type: application/json
 
 {
-  "content" : "Thread ahihiho",
-  "category" : "comedy",
-  "authorId": "66adc7b0dd575e2aee2477e9"
+  "content" : "Thread buatan andi ",
+  "category" : "personal",
+  "authorId": "66b1ae5193cef2104cfc188d"
 }
 
 ### update thread
-PATCH http://localhost:8000/threads/66b0667bd67fe4e45b07fc62
+PATCH http://localhost:8000/threads/66b1af90368d09ef917215c5
 Content-Type: application/json
 
 {
-  "content" : "ahihiho update",
-  "category" : "horror",
-  "release": "2024-08-03",
-  "authorId": "66adc7b0dd575e2aee2477e9"
+  "content" : "thread andi update"
 }
 
 ### delete thread

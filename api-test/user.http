@@ -6,26 +6,26 @@ POST http://localhost:8000/users
 Content-Type: application/json
 
 {
-    "name": "User7",
-    "age": 7,
-    "email": "user76@gmail.com",
-    "password": "mahardika123"
+    "name": "Arie",
+    "age": 21,
+    "email": "arie@gmail.com",
+    "password": "12345678"
 }
 
 ### Delete User
-DELETE http://localhost:8000/users/66b067fb6f620fac91b1f7a8
+DELETE http://localhost:8000/users/66b068ec6f620fac91b1f7b0
 
 
 ### Update User
-PATCH http://localhost:8000/users/66b0444daae36a02d0c3f553
+PATCH http://localhost:8000/users/66b1ae5193cef2104cfc188d
 Authorization: authkey
 Content-Type: application/json
 
 {
-  "name": "user",
+  "name": "andi",
   "age" : 18,
   "email": "cavallery@gmail.com",
-  "password": "12345"
+  "password": "124512345"
 }
 
 ### Login

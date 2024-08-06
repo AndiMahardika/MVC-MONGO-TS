@@ -39,9 +39,13 @@ const UserRepository = {
 
   updateUser: async (userId: string, userData: IUser) => {
     try {
+      const { name, age, email, password } = userData;
+
+      const hashPassword = await bcrypt.hash(password, 13)
+
       const updatedUser = await User.findOneAndUpdate(
         { _id: userId },
-        userData,
+        {name, age, email, password: hashPassword},
         { new: true }
       );
       return updatedUser;
@@ -66,6 +70,15 @@ const UserRepository = {
     } catch (error) {
       console.log(error);
     }
+  },
+
+  checkCollosion: async (email:string) => {
+    try {
+      const user = await User.findOne({email})
+      return user
+    } catch(error) {
+      console.log(error);
+    }   
   }
 }
 

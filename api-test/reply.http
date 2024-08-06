@@ -6,8 +6,8 @@ POST http://localhost:8000/replies
 Content-Type: application/json
 
 {
-  "text" : "ini adalah reply terbaru 2",
-  "threadId": "66af12f5959c292639e35de3"
+  "text" : "ini adalah reply terbaru",
+  "threadId": "66b1af90368d09ef917215c5"
 }
 
 ### update replies
